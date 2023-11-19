@@ -7,9 +7,9 @@ const User = require('../models/userModel')
 //@route POST /api/users
 //@access Public
 const registerUser = asyncHandler(async (req,res)=>{
-    const {technician, station, password, email} = req.body
+    const {technician, station, password, email, admin} = req.body
 
-    if(!technician || !station || !password || !email){
+    if(!technician || !station || !password || !email ||!admin){
         res.status(400)
         throw new Error('Please fill required fields')
     }
@@ -31,6 +31,7 @@ const registerUser = asyncHandler(async (req,res)=>{
         technician,
         station,
         email,
+        admin,
         password: hashedPassword
     })
 
@@ -40,6 +41,7 @@ const registerUser = asyncHandler(async (req,res)=>{
             technician: user.technician,
             station:user.station,
             email: user.email,
+            admin: user.admin,
             token: generateToken(user._id),
         })
     }else{
@@ -62,6 +64,7 @@ const loginUser = asyncHandler(async (req,res)=>{
             technician: user.technician,
             station:user.station,
             email: user.email,
+            admin: user.admin,
             token: generateToken(user._id),
         })
     }else{
@@ -76,14 +79,7 @@ const loginUser = asyncHandler(async (req,res)=>{
 //@route GET /api/users/profile
 //@access Private
 const getUser = asyncHandler(async (req,res)=>{
-    const {_id, technician, email} = await User.findById(req.user.id)
-
-    res.status(200).json({
-        id: _id,
-        technician,
-        email,
-        token: generateToken(user._id)
-    })
+    res.status(200).json(req.user)
 })
 
 //Generate JWT

@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
     password:{
         type: String,
         required: [true, 'Add passwords'],
+    },
+    admin:{
+        type: Boolean,
+        required: [true, 'Set field']
     }
 },
 {timestamps: true}
