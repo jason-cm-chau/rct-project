@@ -42,16 +42,29 @@ const Computers = () => {
   }
   return (
     <div>
-      <ComputerForm/>
+      <ComputerForm computers={computers}/>
 
-      <section>
+      <section className="computer-section">
         {computers.length > 0 ? (
           <table>
             <tr>
-              <th scope="col">Item #</th>
-              <th scope="col">Type</th>
-              <th scope="col">Make</th>
-              <th scope="col">Model</th>
+              <th scope="col" className="computer-item">ITEM #</th>
+              <th scope="col" className="computer-item">RCT #</th>
+              <th scope="col" className="computer-item">SERIAL #</th>
+              <th scope="col" className="computer-item">TYPE</th>
+              <th scope="col" className="computer-item">MAKE</th>
+              <th scope="col" className="computer-item">MODEL</th>
+              <th scope="col" className="computer-item">STORAGE BIN</th>
+              <th scope="col" className="computer-item">CT #</th>
+              <th scope="col" className="computer-item">TECHNICIAN</th>
+              <th scope="col" className="computer-item">WORKSTATION</th>
+              <th scope="col" className="computer-item">RECEIVED</th>
+              <th scope="col" className="computer-item">LOT #</th>
+              <th scope="col" className="computer-item">RECEIPT #</th>
+              <th scope="col" className="computer-item">STATUS</th>
+              <th scope="col" className="computer-item">BTNUMBER</th>
+
+
             </tr>
             {computers.map((computer) => (<tr><ComputerItem key={computer._id}computer={computer}/></tr>))}
           </table>
