@@ -6,6 +6,8 @@ import Computers from './pages/Computers'
 import Login from './pages/Login'
 import Header from './components/Header'
 import Register from './pages/Register'
+import Monitors from './pages/Monitors'
+import Parts from './pages/Parts'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/computers' element={<Computers/>}/>
+            <Route path='/monitors' element={<Monitors/>}/>
+            <Route path='/parts' element={<Parts/>}/>
           </Routes>
         </div>
       </Router>

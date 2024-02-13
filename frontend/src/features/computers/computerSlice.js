@@ -33,7 +33,7 @@ export const getComputers = createAsyncThunk('computer/getAll', async(_,thunkAPI
     }
 })
 
-export const goalSlice = createSlice({
+export const computerSlice = createSlice({
     name: 'computer',
     initialState,
     reducers:{
@@ -69,5 +69,5 @@ export const goalSlice = createSlice({
     }
 })
 
-export const {reset} = goalSlice.actions
-export default goalSlice.reducer
+export const {reset} = computerSlice.actions
+export default computerSlice.reducer

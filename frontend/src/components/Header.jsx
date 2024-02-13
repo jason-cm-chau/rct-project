@@ -31,7 +31,7 @@ const Header = () => {
                    <Link to='/register'><FaAngleRight/></Link>
               </li>
             </ul>
-          ) : (<></>)}
+          ) : navigate('/computers')}
           <ul className='menu'>
               <li> <Link to='/computers'><FaLaptop className='icon'/>Computers</Link> 
                    <Link to='/computers'><FaAngleRight/></Link>

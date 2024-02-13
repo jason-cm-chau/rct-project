@@ -3,7 +3,7 @@ const colors = require ('colors')
 const dotenv = require('dotenv').config()
 const {errorHandler} = require('./middleware/errorMiddleware')
 const connectDB  =require('./config/db')
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 connectDB()
 
@@ -14,6 +14,9 @@ app.use(express.urlencoded({extended: false}))
 
 app.use('/api/computers', require('./routes/computerRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
+app.use('/api/monitors', require('./routes/monitorRoutes'))
+app.use('/api/parts', require('./routes/partRoutes'))
+
 
 app.use(errorHandler)
 

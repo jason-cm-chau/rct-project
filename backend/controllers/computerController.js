@@ -25,7 +25,7 @@ const addComputer = asyncHandler(async (req,res)=>{
         type: type,
         make: make,
         model: model,
-        user: req.user.id
+        //user: req.user.id
     })
 
     res.status(200).json(computer)
