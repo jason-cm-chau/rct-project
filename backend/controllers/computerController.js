@@ -14,7 +14,7 @@ const getComputer = asyncHandler(async (req,res)=>{
 //@route POST /api/computers
 //@access Private
 const addComputer = asyncHandler(async (req,res)=>{
-    const { item_number, type, make, model} = res.body
+    const { item_number, type, make, model} = req.body
     if(!item_number || !type || !make ||!model){
         res.status(400)
         throw new Error('Field required')
@@ -56,7 +56,7 @@ const deleteComputer = asyncHandler(async (req,res)=>{
         throw new Error('Computer not found')
     }
 
-    await computer.remove()//need to debug this
+    await computer.deleteOne(computer)//need to debug this
 
     res.status(200).json({id: `${req.params.id}`})
 })

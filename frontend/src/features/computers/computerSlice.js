@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import compterService from './computerService'
+import computerService from './computerService'
 
 const initialState = {
     computers: [],
@@ -12,7 +12,7 @@ const initialState = {
 export const createComputer = createAsyncThunk('computer/create', async (computerData, thunkAPI)=>{
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await compterService.createComputer(computerData, token)
+        return await computerService.createComputer(computerData, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) 
         || error.message || error.toString()
@@ -24,7 +24,7 @@ export const createComputer = createAsyncThunk('computer/create', async (compute
 export const getComputers = createAsyncThunk('computer/getAll', async(_,thunkAPI)=>{
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await compterService.getComputers(token)
+        return await computerService.getComputers(token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) 
         || error.message || error.toString()

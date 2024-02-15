@@ -28,12 +28,10 @@ const monitorSchema = mongoose.Schema({
     },
     technician:{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'User'
     },
     workstation:{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'User'
     },
     received:{

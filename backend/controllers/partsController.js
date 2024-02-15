@@ -14,7 +14,7 @@ const getParts = asyncHandler(async (req,res)=>{
 //@route POST /api/computers
 //@access Private
 const addParts = asyncHandler(async (req,res)=>{
-    const { item_number, type, make, model} = res.body
+    const { item_number, type, make, model, size} = req.body
     if(!item_number || !type || !make ||!model){
         res.status(400)
         throw new Error('Field required')
@@ -25,6 +25,7 @@ const addParts = asyncHandler(async (req,res)=>{
         type: type,
         make: make,
         model: model,
+        size: size,
         user: req.user.id
     })
 
@@ -56,7 +57,7 @@ const deleteParts = asyncHandler(async (req,res)=>{
         throw new Error('parts not found')
     }
 
-    await parts.remove()//need to debug this
+    await parts.deleteOne(parts)//need to debug this
 
     res.status(200).json({id: `${req.params.id}`})
 })

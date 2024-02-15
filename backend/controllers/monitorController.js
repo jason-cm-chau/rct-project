@@ -14,7 +14,7 @@ const getMonitor = asyncHandler(async (req,res)=>{
 //@route POST /api/monitor
 //@access Private
 const addMonitor = asyncHandler(async (req,res)=>{
-    const { item_number, type, make, model} = res.body
+    const { item_number, type, make, model} = req.body
     if(!item_number || !type || !make ||!model){
         res.status(400)
         throw new Error('Field required')
@@ -56,7 +56,7 @@ const deleteMonitor = asyncHandler(async (req,res)=>{
         throw new Error('monitor not found')
     }
 
-    await monitor.remove()//need to debug this
+    await monitor.deleteOne(monitor)//need to debug this
 
     res.status(200).json({id: `${req.params.id}`})
 })
